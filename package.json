@@ -1,0 +1,25 @@
+{
+  "name": "proof-of.work",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run clean-dist && concurrently \"npm run dev\" \"npm run run-server\" ",
+    "dev": "tsc --watch",
+    "run-server": "nodemon dist/index.js",
+    "clean-dist": "rimraf ./dist"
+  },
+  "author": "Ramses De La Peña",
+  "dependencies": {
+    "js-sha256": "^0.7.1",
+    "lodash": "^4.17.4",
+    "rimraf": "^2.6.2",
+    "sha256": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.28",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.12.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.2"
+  }
+}
