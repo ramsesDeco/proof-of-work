@@ -5,6 +5,7 @@ export class App {
 
     proofOfWorkHash: string;
     nonce: number;
+    text: string;
 
     constructor() {
         this.init();
@@ -20,18 +21,19 @@ export class App {
         console.timeEnd('Finished after')
         console.log(`PoW Hash: ${this.proofOfWorkHash}`);
         console.log(`Nonce used: ${this.nonce}`);
+        console.log(`text: ${this.text}`);
     }
 
     loop() {
-        this.proofOfWorkHash = this.hash(Data.message);
-        this.nonce++;
         while (!this.checkZerosAtLeft(this.proofOfWorkHash, Data.difficulty)) {
-            this.proofOfWorkHash = this.hash(this.proofOfWorkHash);
+            this.text = Data.message + this.nonce;
+            this.proofOfWorkHash = this.hash(this.text);
             this.nonce++;
         }
+        this.nonce--;
     }
 
-    hash(message: string): string {
+    hash(message:string): string {
         return hash.sha256(message)
     }
 
