@@ -34,7 +34,7 @@ export class App {
     }
 
     hash(message:string): string {
-        return hash.sha256(message)
+        return hash.sha256(hash.arrayBuffer(message));
     }
 
     checkZerosAtLeft(message: string, difficulty: number): boolean {
