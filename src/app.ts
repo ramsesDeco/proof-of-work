@@ -34,16 +34,10 @@ export class App {
     }
 
     hash(message:string): string {
-        return hash.sha256(hash.arrayBuffer(message));
+        return hash.sha256(hash.array(message));
     }
 
     checkZerosAtLeft(message: string, difficulty: number): boolean {
-        let zeros = String(message).substring(0, difficulty);
-        let shouldBe = '';
-        for (let i = 0; i < difficulty; i++) {
-            shouldBe += '0';
-        }
-
-        return zeros == shouldBe;
+        return String(message).substr(0, difficulty) === '0'.repeat(difficulty);
     }
 }
